@@ -87,7 +87,6 @@ namespace WebAaddressbookTests
 
         private void InitGroupCreation()
         {
-            // Init group creation
             driver.FindElement(By.Name("new")).Click();
         }
 
