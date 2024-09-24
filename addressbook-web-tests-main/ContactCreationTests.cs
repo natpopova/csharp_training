@@ -47,16 +47,16 @@ namespace WebAaddressbookTests
             GoToAddNewContactPage();
             // создаёт объект group класса ContactData
             ContactData group = new ContactData(); // тогда не нужен конструктор ("Max", "Pain");
-            group.Firstname = "admin";
-            group.Lastname = "admin";
-            group.Address = "Red str";
+            group.Firstname = "admin2";
+            group.Lastname = "admin2";
+            group.Address = "Black str";
             //group.Home = 123456789;
             group.Mobile = "12345";
             group.Email = "email1";
             group.Bday = "1";
-            group.Bmonth = "April";
+            group.Bmonth = "May";
             group.Byear = "2000";
-            //FillContactForm();
+            FillContactForm(group);
             SubmitContactCreation();
             ReturnToHomePage();
             Logout();
