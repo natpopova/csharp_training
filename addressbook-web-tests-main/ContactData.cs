@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAaddressbookTests
 {
-    internal class ContactData
+    public class ContactData
     {
         //объявили переменные
         private string firstname = string.Empty;
