@@ -10,7 +10,8 @@ namespace WebAaddressbookTests
 {
     public class ContactHelper : HelperBase
     {
-        public ContactHelper(IWebDriver driver) : base(driver)
+        public ContactHelper(ApplicationManager manager)
+            : base(manager)
         {
         }
         public void FillContactForm(ContactData group)

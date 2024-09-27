@@ -18,15 +18,21 @@ namespace WebAaddressbookTests
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
 
+
         public ApplicationManager()
         {
-            loginHelper = new LoginHelper(driver);
-            navigator = new NavigateHelper(driver, baseURL);
-            groupHelper = new GroupHelper(driver);
-            contactHelper = new ContactHelper(driver);
-
             driver = new FirefoxDriver();
             baseURL = "http://localhost/addressbook/";
+
+            loginHelper = new LoginHelper(this);
+            navigator = new NavigateHelper(this, baseURL);
+            groupHelper = new GroupHelper(this);
+            contactHelper = new ContactHelper(this);
+        }
+
+        public IWebDriver Driver 
+        {
+        get { return driver; }
         }
 
         public void Stop()
@@ -46,6 +52,7 @@ namespace WebAaddressbookTests
         public NavigateHelper Navigate { get { return navigator; } }
         public GroupHelper GroupHelper { get { return groupHelper; } }
         public ContactHelper ContactHelper { get {return contactHelper; } }
+
 
     }
 }

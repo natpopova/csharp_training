@@ -9,9 +9,24 @@ namespace WebAaddressbookTests
 {
     public class GroupHelper : HelperBase
     {
-        public GroupHelper(IWebDriver driver) :base (driver)
+        public GroupHelper(ApplicationManager manager)
+            :base (manager)
         {
         }
+
+         //GroupHelper — это тип возвращаемого значения метода. В данном случае это указывает, что метод возвращает экземпляр класса GroupHelper.
+        //СreateGroup() — имя метода.Этот метод не принимает параметров, и его задача — вернуть текущий объект.
+        //return this; возвращает текущий объект класса GroupHelper, что позволяет продолжить работу с этим же объектом в цепочке вызовов.
+        public GroupHelper Сreate(GroupData group)
+        {
+            manager.Navigate.GoToGroupsPage();
+            InitGroupCreation();
+            FillGroupForm(group);
+            SubmitGroupCreation();
+            ReturnToGroupsPage(); 
+            return this;
+        }
+
         public GroupHelper SelectGroup(int index)
         {
             driver.FindElement(By.XPath("//span[" + index + "]/input")).Click();

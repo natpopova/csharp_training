@@ -11,21 +11,25 @@ namespace WebAaddressbookTests
     [TestFixture]
     public class GroupCreationTests : TestBase
     {
-
         [Test]
         public void GroupCreationTest()
         {
-            app.Navigate.OpenHomePage();
-            app.Auth.Login(new AccountData("admin", "secret"));
-            app.Navigate.GoToGroupsPage();
+            //инициализировали тестовые данные
             GroupData group = new GroupData("q");
             group.Header = "q";
             group.Footer = "qw";
-            app.GroupHelper
-                .InitGroupCreation()
-                .FillGroupForm(group)
-                .SubmitGroupCreation()
-                .ReturnToGroupsPage();
+
+            app.GroupHelper.Сreate(group);
+            //Logout();
+        }
+        [Test]
+        public void EmptyGroupCreationTest()
+        {
+            GroupData group = new GroupData("");
+            group.Header = "";
+            group.Footer = "";
+
+            app.GroupHelper.Сreate(group);
             //Logout();
         }
     }

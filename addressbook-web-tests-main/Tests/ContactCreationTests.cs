@@ -12,11 +12,9 @@ namespace WebAaddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            app.Navigate.OpenHomePage();
-            app.Auth.Login(new AccountData("admin", "secret"));
             app.Navigate.GoToAddNewContactPage();
             // создаёт объект group класса ContactData
-            ContactData group = new ContactData(); // тогда не нужен конструктор ("Max", "Pain");
+            ContactData group = new ContactData();
             group.Firstname = "admin2";
             group.Lastname = "admin2";
             group.Address = "Black str";
