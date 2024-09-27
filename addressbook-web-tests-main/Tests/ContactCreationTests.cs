@@ -12,9 +12,9 @@ namespace WebAaddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            OpenHomePage();
-            Login(new AccountData("admin", "secret"));
-            GoToAddNewContactPage();
+            app.Navigate.OpenHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
+            app.Navigate.GoToAddNewContactPage();
             // создаёт объект group класса ContactData
             ContactData group = new ContactData(); // тогда не нужен конструктор ("Max", "Pain");
             group.Firstname = "admin2";
@@ -26,10 +26,10 @@ namespace WebAaddressbookTests
             group.Bday = "1";
             group.Bmonth = "May";
             group.Byear = "2000";
-            FillContactForm(group);
-            SubmitContactCreation();
-            ReturnToHomePage();
-            Logout();
+            app.ContactHelper.FillContactForm(group);
+            app.ContactHelper.SubmitContactCreation();
+            app.ContactHelper.ReturnToHomePage();
+            //Logout();
         }
     }
 }

@@ -15,16 +15,18 @@ namespace WebAaddressbookTests
         [Test]
         public void GroupCreationTest()
         {
-            OpenHomePage();
-            Login(new AccountData("admin", "secret"));
-            GoToGroupsPage();
-            InitGroupCreation();
+            app.Navigate.OpenHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
+            app.Navigate.GoToGroupsPage();
             GroupData group = new GroupData("q");
             group.Header = "q";
             group.Footer = "qw";
-            SubmitGroupCreation();
-            ReturnToGroupsPage();
-            Logout();
+            app.GroupHelper
+                .InitGroupCreation()
+                .FillGroupForm(group)
+                .SubmitGroupCreation()
+                .ReturnToGroupsPage();
+            //Logout();
         }
     }
 }
