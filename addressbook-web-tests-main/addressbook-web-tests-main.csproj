@@ -89,6 +89,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests\ContactModificationTests.cs" />
+    <Compile Include="Tests\GroupModificationTests.cs" />
     <Compile Include="Models\AccountData.cs" />
     <Compile Include="Appmanager\ApplicationManager.cs" />
     <Compile Include="Models\ContactData.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Tests\GroupCreationTests.cs" />
     <Compile Include="Tests\GroupRemovalTests.cs" />
     <Compile Include="Tests\TestBase.cs" />
+    <Compile Include="Tests\ContactRemovalTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

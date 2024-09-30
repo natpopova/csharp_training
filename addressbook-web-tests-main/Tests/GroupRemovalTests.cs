@@ -12,11 +12,8 @@ namespace WebAaddressbookTests
         [Test]
         public void GroupRemovalTest()
         {
-            app.Navigate.GoToGroupsPage();
-            app.GroupHelper
-                .SelectGroup(1)
-                .RemoveGroup()
-                .ReturnToGroupsPage();
+            app.GroupHelper.Remove(1);
+
             //Logout();
         }
     }

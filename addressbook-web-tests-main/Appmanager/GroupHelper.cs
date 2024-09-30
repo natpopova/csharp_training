@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,7 +33,27 @@ namespace WebAaddressbookTests
             driver.FindElement(By.XPath("//span[" + index + "]/input")).Click();
             return this;
         }
+        public GroupHelper Modify(int p, GroupData newData)
+        {
+            manager.Navigate.GoToGroupsPage();
+            SelectGroup(p);
+            InitGroupModification();
+            FillGroupForm(newData);
+            SubmitGroupModification();
+            ReturnToGroupsPage();
+            return this;
+        }
 
+        public GroupHelper Remove(int p)
+        {
+            manager.Navigate.GoToGroupsPage();
+            SelectGroup(p);
+            RemoveGroup();
+            ReturnToGroupsPage();
+
+            return this;
+        }
+        //кнопка  Delete group(s)
         public GroupHelper RemoveGroup()
         {
             driver.FindElement(By.Name("delete")).Click();
@@ -69,5 +90,18 @@ namespace WebAaddressbookTests
             driver.FindElement(By.LinkText("group page")).Click();
             return this;
         }
+        public GroupHelper InitGroupModification()
+        {
+            driver.FindElement(By.Name("edit")).Click();
+            return this;
+        }
+
+        public GroupHelper SubmitGroupModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+
     }
 }

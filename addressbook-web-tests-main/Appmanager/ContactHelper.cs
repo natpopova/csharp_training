@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace WebAaddressbookTests
 {
@@ -14,7 +15,18 @@ namespace WebAaddressbookTests
             : base(manager)
         {
         }
-        public void FillContactForm(ContactData group)
+
+        public ContactHelper Create(ContactData group)
+        {
+            manager.Navigate.OpenHomePage();
+            manager.Navigate.GoToAddNewContactPage();
+            FillContactForm(group);
+            SubmitContactCreation();
+            ReturnToHomePage();
+            return this;
+        }
+
+        public ContactHelper FillContactForm(ContactData group)
         {
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
@@ -45,17 +57,57 @@ namespace WebAaddressbookTests
             driver.FindElement(By.Name("byear")).Clear();
             driver.FindElement(By.Name("byear")).SendKeys(group.Byear);
             driver.FindElement(By.Name("theform")).Click();
+            return this;
         }
 
-        public void SubmitContactCreation()
+        public ContactHelper SubmitContactCreation()
         {
             driver.FindElement(By.XPath("//input[20]")).Click();
+            return this;
         }
 
-        public void ReturnToHomePage()
+        public ContactHelper Modify(int v, ContactData newData)
+        {
+            manager.Navigate.OpenHomePage();
+            driver.FindElement(By.XPath("//tr[3]/td[8]/a/img")).Click();
+            FillContactForm(newData);
+            driver.FindElement(By.Name("update")).Click();
+            ReturnToHomePage();
+            return this;
+        }
+
+        public ContactHelper ReturnToHomePage()
         {
             driver.FindElement(By.LinkText("home page")).Click();
+            return this;
         }
 
+        public ContactHelper Remove(int p)
+        {
+            manager.Navigate.OpenHomePage();
+            SelectContact(p);
+            RemoveContact();
+            return this;
+        }
+
+
+        public ContactHelper SelectContact(int index)
+        {
+            //driver.FindElement(By.XPath("//input[@id='" + index + "']")).Click();
+            //driver.FindElement(By.XPath($"//input[@id='{index}']")).Click();
+            //driver.FindElement(By.XPath("//input[@id='11']")).Click();
+            //driver.FindElement(By.XPath($"//input[@value='selected' and @id='{index}']")).Click();
+            //driver.FindElement(By.XPath($"//input[@value='selected' and contains(@id, '{index}')]")).Click();
+            //driver.FindElement(By.XPath("(//input[@type='checkbox'])[1]")).Click();
+            driver.FindElement(By.XPath($"(//input[@type='checkbox'])[{index}]")).Click();
+
+            return this;
+        }
+
+        public ContactHelper RemoveContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            return this;
+        }
     }
 }

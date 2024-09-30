@@ -12,21 +12,19 @@ namespace WebAaddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            app.Navigate.GoToAddNewContactPage();
             // создаёт объект group класса ContactData
             ContactData group = new ContactData();
-            group.Firstname = "admin2";
-            group.Lastname = "admin2";
-            group.Address = "Black str";
+            group.Firstname = "admin new";
+            group.Lastname = "admin new";
+            group.Address = "Yello str";
             //group.Home = 123456789;
             group.Mobile = "12345";
-            group.Email = "email1";
-            group.Bday = "1";
+            group.Email = "email new";
+            group.Bday = "22";
             group.Bmonth = "May";
             group.Byear = "2000";
-            app.ContactHelper.FillContactForm(group);
-            app.ContactHelper.SubmitContactCreation();
-            app.ContactHelper.ReturnToHomePage();
+
+            app.ContactHelper.Create(group);
             //Logout();
         }
     }
