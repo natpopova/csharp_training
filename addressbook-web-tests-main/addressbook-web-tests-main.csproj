@@ -106,6 +106,7 @@
     <Compile Include="Tests\GroupRemovalTests.cs" />
     <Compile Include="Tests\TestBase.cs" />
     <Compile Include="Tests\ContactRemovalTests.cs" />
+    <Compile Include="Tests\TestSuiteFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

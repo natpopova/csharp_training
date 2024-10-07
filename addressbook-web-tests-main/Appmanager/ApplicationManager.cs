@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace WebAaddressbookTests
 {
@@ -18,8 +19,9 @@ namespace WebAaddressbookTests
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
 
+        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>(); //это спец объект, который устанавливает соответствие м/д потоком и объетом типа апп.менеджер
 
-        public ApplicationManager()
+        private ApplicationManager()
         {
             driver = new FirefoxDriver();
             baseURL = "http://localhost/addressbook/";
@@ -30,14 +32,9 @@ namespace WebAaddressbookTests
             contactHelper = new ContactHelper(this);
         }
 
-        public IWebDriver Driver 
+        //деструктор - вызывается автоматически, обратиться к нельзя 
+         ~ApplicationManager()
         {
-        get { return driver; }
-        }
-
-        public void Stop()
-        {
-
             try
             {
                 driver.Quit();
@@ -47,6 +44,23 @@ namespace WebAaddressbookTests
                 // Ignore errors if unable to close the browser
             }
         }
+
+        //Singleton
+        public static ApplicationManager GetInstance() 
+        { 
+            if (! app.IsValueCreated)
+            { 
+                app.Value = new ApplicationManager();
+            }
+            return app.Value;
+        }
+
+        
+        public IWebDriver Driver 
+        {
+        get { return driver; }
+        }
+
 
         public LoginHelper Auth {  get { return loginHelper; } }
         public NavigateHelper Navigate { get { return navigator; } }
