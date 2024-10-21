@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebAaddressbookTests
 {
-    public class ContactModificationTests : TestBase
+    public class ContactModificationTests : AuthTestBase
     {
         [Test]
         public void ContactModificationTest()

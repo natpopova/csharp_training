@@ -24,7 +24,7 @@ namespace WebAaddressbookTests
         private ApplicationManager()
         {
             driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook/";
+            baseURL = "http://localhost:8080/addressbook/";
 
             loginHelper = new LoginHelper(this);
             navigator = new NavigateHelper(this, baseURL);
@@ -49,8 +49,10 @@ namespace WebAaddressbookTests
         public static ApplicationManager GetInstance() 
         { 
             if (! app.IsValueCreated)
-            { 
-                app.Value = new ApplicationManager();
+            {
+                ApplicationManager newInstanse = new ApplicationManager();
+                newInstanse.Navigate.OpenHomePage();
+                app.Value = newInstanse;
             }
             return app.Value;
         }

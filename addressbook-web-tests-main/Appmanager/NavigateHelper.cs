@@ -19,16 +19,23 @@ namespace WebAaddressbookTests
             this.baseURL = baseURL;
         }
 
-        public NavigateHelper OpenHomePage()
+        public void OpenHomePage()
         {
+            if (driver.Url == baseURL)
+            {
+                return;
+            }
             driver.Navigate().GoToUrl(baseURL);
-            return this;
         }
 
-        public NavigateHelper GoToGroupsPage()
+        public void GoToGroupsPage()
         {
+            if (driver.Url== baseURL+ "group.php"
+                && IsElementPresent(By.Name("new")))
+            {
+                return;
+            }
             driver.FindElement(By.LinkText("groups")).Click();
-            return this;
         }
 
         public NavigateHelper GoToAddNewContactPage()

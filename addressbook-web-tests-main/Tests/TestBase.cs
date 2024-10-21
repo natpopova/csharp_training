@@ -14,15 +14,10 @@ namespace WebAaddressbookTests
         protected ApplicationManager app;
 
         [SetUp]
-        public void SetupTest()
+        public void SetupApplicationManager()
         {
             app = ApplicationManager.GetInstance(); ;
 
         }
-
-        //protected void Logout()
-        //{
-        //    driver.FindElement(By.LinkText("Logout")).Click();
-        //}
     }
 }
