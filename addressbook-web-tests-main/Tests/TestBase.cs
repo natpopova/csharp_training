@@ -16,8 +16,7 @@ namespace WebAaddressbookTests
         [SetUp]
         public void SetupApplicationManager()
         {
-            app = ApplicationManager.GetInstance(); ;
-
+            app = ApplicationManager.GetInstance();
         }
     }
 }

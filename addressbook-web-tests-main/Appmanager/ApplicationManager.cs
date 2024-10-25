@@ -19,7 +19,8 @@ namespace WebAaddressbookTests
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
 
-        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>(); //это спец объект, который устанавливает соответствие м/д потоком и объетом типа апп.менеджер
+        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>(); 
+        //это спец объект, который устанавливает соответствие м/д потоком и объетом типа апп.менеджер
 
         private ApplicationManager()
         {
@@ -33,6 +34,7 @@ namespace WebAaddressbookTests
         }
 
         //деструктор - вызывается автоматически, обратиться к нельзя 
+
          ~ApplicationManager()
         {
             try

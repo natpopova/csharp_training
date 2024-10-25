@@ -15,6 +15,7 @@ namespace WebAaddressbookTests
         public LoginHelper(ApplicationManager manager)
             : base(manager)
         {
+
         }
 
         public void Login(AccountData account)
@@ -49,7 +50,6 @@ namespace WebAaddressbookTests
         {
             return IsLoggedIn()
                 && driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text == "(" + account.Username + ")";
-            throw new NotImplementedException();
         }
     }
 }

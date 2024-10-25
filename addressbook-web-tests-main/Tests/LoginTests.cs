@@ -26,6 +26,8 @@ namespace WebAaddressbookTests
 
             //verification
             Assert.IsTrue(app.Auth.IsLoggedIn(account));
+
+            app.Auth.LogOut();
         }
 
         [Test]
@@ -39,8 +41,14 @@ namespace WebAaddressbookTests
             AccountData account = new AccountData("admin", "123");
             app.Auth.Login(account);
 
-            //verification
+            //verification: Проверка: Пользователь не должен быть авторизован
             Assert.IsFalse(app.Auth.IsLoggedIn(account));
+
+            // Очистка (если требуется)
+            if (app.Auth.IsLoggedIn())
+            {
+                app.Auth.LogOut(); // Выйти, если вдруг вход произошёл
+            }
         }
     }
 }

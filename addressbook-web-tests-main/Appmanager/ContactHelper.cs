@@ -79,12 +79,6 @@ namespace WebAaddressbookTests
 
         public ContactHelper SelectContact(int index)
         {
-            //driver.FindElement(By.XPath("//input[@id='" + index + "']")).Click();
-            //driver.FindElement(By.XPath($"//input[@id='{index}']")).Click();
-            //driver.FindElement(By.XPath("//input[@id='11']")).Click();
-            //driver.FindElement(By.XPath($"//input[@value='selected' and @id='{index}']")).Click();
-            //driver.FindElement(By.XPath($"//input[@value='selected' and contains(@id, '{index}')]")).Click();
-            //driver.FindElement(By.XPath("(//input[@type='checkbox'])[1]")).Click();
             driver.FindElement(By.XPath($"(//input[@type='checkbox'])[{index}]")).Click();
 
             return this;

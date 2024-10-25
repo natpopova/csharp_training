@@ -38,10 +38,14 @@ namespace WebAaddressbookTests
             driver.FindElement(By.LinkText("groups")).Click();
         }
 
-        public NavigateHelper GoToAddNewContactPage()
+        public void GoToAddNewContactPage()
         {
+            if (driver.Url == baseURL + "edit.php"
+                && IsElementPresent(By.Name("submit")))
+            {
+                return;
+            }
             driver.FindElement(By.LinkText("add new")).Click();
-            return this;
         }
     }
 }
